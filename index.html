@@ -25,7 +25,6 @@
             justify-content: center;
         }
 
-        /* Dual-layer background system to prevent flickering */
         .bg-layer {
             position: fixed;
             top: 0;
@@ -70,7 +69,7 @@
         }
 
         .logo-img {
-            max-width: 260px;
+            max-width: 200px; 
             width: 100%;
             height: auto;
         }
@@ -87,7 +86,6 @@
             backdrop-filter: blur(10px);
         }
 
-        /* Scratchy worn font for numbers */
         .time-val {
             font-family: 'Special Elite', cursive;
             filter: contrast(1.2) brightness(0.95);
@@ -107,7 +105,13 @@
             align-items: center;
             width: 100%;
             margin-top: 1.5rem;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .virus-bar-wrapper {
+                margin-bottom: 3rem;
+            }
         }
 
         .virus-bar-container {
@@ -137,14 +141,21 @@
             display: inline-block;
             background: white;
             color: black;
-            padding: 0.75rem 2rem;
+            padding: 0.65rem 1.5rem;
             font-weight: bold;
             letter-spacing: 0.1em;
             text-transform: uppercase;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             border: 1px solid white;
             transition: all 0.3s;
             text-decoration: none;
+        }
+
+        @media (min-width: 768px) {
+            .preorder-btn {
+                padding: 0.75rem 2rem;
+                font-size: 0.8rem;
+            }
         }
 
         .preorder-btn:hover {
@@ -152,17 +163,24 @@
             color: white;
         }
 
-        /* Minimalistic Volume Controls */
         .audio-controls {
             position: fixed;
-            bottom: 2rem;
-            right: 2rem;
+            bottom: 1.5rem;
+            right: 1.5rem;
             z-index: 50;
             display: flex;
             align-items: center;
             gap: 12px;
-            opacity: 0.5;
+            opacity: 0.4;
             transition: opacity 0.3s;
+        }
+
+        @media (min-width: 768px) {
+            .audio-controls {
+                bottom: 2rem;
+                right: 2rem;
+                opacity: 0.5;
+            }
         }
 
         .audio-controls:hover {
@@ -177,11 +195,17 @@
 
         input[type="range"] {
             -webkit-appearance: none;
-            width: 80px;
+            width: 60px;
             height: 2px;
             background: rgba(255, 255, 255, 0.2);
             outline: none;
             cursor: pointer;
+        }
+
+        @media (min-width: 768px) {
+            input[type="range"] {
+                width: 80px;
+            }
         }
 
         input[type="range"]::-webkit-slider-thumb {
@@ -193,35 +217,50 @@
             cursor: pointer;
         }
 
-        /* Subtitle Styling */
         .subtitle-container {
             position: fixed;
-            bottom: 3rem;
+            bottom: 1rem;
             left: 50%;
             transform: translateX(-50%);
             z-index: 25;
             text-align: center;
             pointer-events: none;
+            width: 90%;
+        }
+
+        @media (min-width: 768px) {
+            .subtitle-container {
+                bottom: 3rem;
+            }
         }
 
         .subtitle-date {
-            font-size: 0.7rem;
+            font-size: 0.6rem;
             text-transform: uppercase;
-            letter-spacing: 0.3em;
+            letter-spacing: 0.2em;
             color: var(--re-gray);
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.15rem;
+        }
+
+        @media (min-width: 768px) {
+            .subtitle-date {
+                font-size: 0.7rem;
+                letter-spacing: 0.3em;
+                margin-bottom: 0.25rem;
+            }
         }
 
         .subtitle-tagline {
             font-family: 'Special Elite', cursive;
-            font-size: 0.9rem;
+            font-size: 0.7rem;
             opacity: 0.7;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.05em;
         }
 
         @media (min-width: 768px) {
             .subtitle-tagline {
                 font-size: 1.1rem;
+                letter-spacing: 0.1em;
             }
         }
 
@@ -242,30 +281,30 @@
     <div class="overlay-vignette"></div>
     <div class="crt-overlay"></div>
 
-    <div class="container max-w-2xl px-4 z-20">
+    <div class="container max-w-2xl px-6 z-20">
         <div class="text-center flex flex-col items-center">
             
             <div class="logo-container">
-                <img src="logo_w.webp"
+                <img src="logo_w.webp" 
                      alt="Resident Evil Requiem" 
                      class="logo-img">
             </div>
 
             <div id="countdown-display" class="grid grid-cols-4 gap-3 w-full">
-                <div class="countdown-box p-6 rounded-none flex flex-col items-center">
-                    <span id="days" class="time-val text-4xl md:text-5xl font-bold">00</span>
+                <div class="countdown-box p-4 md:p-6 rounded-none flex flex-col items-center">
+                    <span id="days" class="time-val text-3xl md:text-5xl font-bold">00</span>
                     <span class="unit-label mt-2">Days</span>
                 </div>
-                <div class="countdown-box p-6 rounded-none flex flex-col items-center">
-                    <span id="hours" class="time-val text-4xl md:text-5xl font-bold">00</span>
+                <div class="countdown-box p-4 md:p-6 rounded-none flex flex-col items-center">
+                    <span id="hours" class="time-val text-3xl md:text-5xl font-bold">00</span>
                     <span class="unit-label mt-2">Hours</span>
                 </div>
-                <div class="countdown-box p-6 rounded-none flex flex-col items-center">
-                    <span id="minutes" class="time-val text-4xl md:text-5xl font-bold">00</span>
+                <div class="countdown-box p-4 md:p-6 rounded-none flex flex-col items-center">
+                    <span id="minutes" class="time-val text-3xl md:text-5xl font-bold">00</span>
                     <span class="unit-label mt-2">Mins</span>
                 </div>
-                <div class="countdown-box p-6 rounded-none flex flex-col items-center">
-                    <span id="seconds" class="time-val text-4xl md:text-5xl font-bold">00</span>
+                <div class="countdown-box p-4 md:p-6 rounded-none flex flex-col items-center">
+                    <span id="seconds" class="time-val text-3xl md:text-5xl font-bold">00</span>
                     <span class="unit-label mt-2">Secs</span>
                 </div>
             </div>
@@ -283,13 +322,11 @@
         </div>
     </div>
 
-    <!-- Subtitle Footer -->
     <div class="subtitle-container">
         <div class="subtitle-date">February 27 2026</div>
-        <div class="subtitle-tagline">Requiem for the dead. Nightmare for the living.</div>
+        <div class="subtitle-tagline">Requiem for the dead. Nightmare for the living</div>
     </div>
 
-    <!-- Minimalistic Volume Control -->
     <div class="audio-controls">
         <i id="volume-icon" class="fas fa-volume-mute"></i>
         <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5">
@@ -307,10 +344,9 @@
             "banner6.jpg",
             "banner7.jpg",
             "banner8.jpg",
-            "banner9.jpg",
+            "banner9.jpg"
         ];
 
-        // Preload images
         images.forEach(src => { const img = new Image(); img.src = src; });
 
         const layers = [document.getElementById('bg-1'), document.getElementById('bg-2')];
@@ -330,7 +366,6 @@
         currentImgIndex = (currentImgIndex + 1) % images.length;
         setInterval(cycleBackground, 8000);
 
-        // Countdown Logic
         const releaseDate = new Date("2026-02-27T00:00:00Z").getTime();
         const startDate = new Date("2025-06-06T00:00:00Z").getTime();
         
@@ -365,7 +400,6 @@
         updateCountdown();
         setInterval(updateCountdown, 1000);
 
-        // Audio Logic
         const audio = document.getElementById('theme-audio');
         const volIcon = document.getElementById('volume-icon');
         const volSlider = document.getElementById('volume-slider');
