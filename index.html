@@ -366,11 +366,27 @@
         currentImgIndex = (currentImgIndex + 1) % images.length;
         setInterval(cycleBackground, 8000);
 
+        const targetUTC = "2026-02-27T00:00:00Z";
+        const startUTC = "2025-06-06T00:00:00Z";
         const releaseDate = new Date("2026-02-27T00:00:00Z").getTime();
         const startDate = new Date("2025-06-06T00:00:00Z").getTime();
+
+        let serverTimeOffset = 0;
+
+        async function syncWithWorldTime() {
+            try {
+                const response = await fetch('https://worldtimeapi.org/api/timezone/Etc/UTC');
+                const data = await response.json();
+                const serverTime = new Date(data.datetime).getTime();
+                const localTime = new Date().getTime();
+                serverTimeOffset = serverTime - localTime;
+            } catch (err) {
+                serverTimeOffset = 0;
+            }
+        }
         
         function updateCountdown() {
-            const now = new Date().getTime();
+            const now = new Date().getTime() + serverTimeOffset;
             const distance = releaseDate - now;
 
             if (distance < 0) {
@@ -397,6 +413,7 @@
             document.getElementById("progress-percent").innerText = progress.toFixed(1) + "%";
         }
 
+        syncWithWorldTime();
         updateCountdown();
         setInterval(updateCountdown, 1000);
 
@@ -429,4 +446,5 @@
     </script>
 </body>
 </html>
+
 
